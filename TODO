@@ -1,0 +1,9 @@
+*fixing version handling in Makefile.am (proper lib version!)
+*documentation
+*implementing stub routines
+*examining if there are still deadlocks / race conditions
+DONE:
+*protecting "getParam" and "setParam", "INIT" and "CLOSE" by an mutex
+*separate RO and RW parameters
+*adding some important parameters (e.g. ABSX, ABSY)
+*renaming 'None' in 'Button' enum to 'NoButton'

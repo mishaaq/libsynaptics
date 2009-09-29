@@ -1,0 +1,10 @@
+19-10-2006
+* rewriting singleton pad class (breaks compability!)
+10-06-2006
+* released 0.14.5a-debug
+14-06-2006
+* adding DV_TOORECENT for driver version that are relatively recent and,
+hence, yet unsupported!
+* fixed two warnings
+* implementing hasSynClient/hasSynDaemon and making them public
+* removing debug messages once again

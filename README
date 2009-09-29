@@ -1,0 +1,57 @@
+PURPOSE:
+    libsynaptics is intended to support all upcoming driver versions of the
+    Xorg Synaptics Touch Pad Driver [1].
+    Programs that want to access the touch pad should make use of this library
+    and will thereby not interfere with each other.
+    Available parameters can be read and written and the version of the 
+    installed driver can be determined.
+    It is still not clear whether libsynaptics will be distributed seperately or
+    within the driver package (which seems to be the better solution to me! )
+    
+    Future releases of QSynaptics and KSynaptics [3] are planned to rely on libsynaptics.
+
+LICENSE:
+    GPL version 2 [2]
+
+USAGE:
+    As for now libsynaptics is distributed seperately, you need to install it manually.
+    If you want to write a C++ program that uses libsynaptics you need to include <synaptics.h>
+    (in /usr/include/synaptics/synaptics.h)
+    The delivered "padtest.cpp" is an easy example how to make use of the library.
+
+PREREQUISITES:
+    Xorg Synaptics Driver Version 0.14.4 or above [1]
+
+INSTALLATION:
+    Unpack the tar ball.
+    First, uninstall any previously installed version by running "make uninstall".
+    Run "make" and "make install". 
+    You're done!
+
+    FROM SVN:
+
+    RUN
+      aclocal
+      autoconf
+      automake
+      ./configure --prefix=/usr
+      make
+      (sudo) make install
+
+    DONE!
+
+TESTING AND BUG REPORTS:
+    "make test" creates a simple regression test. If the test detects bugs (wrong parameters),
+    a tar "buginfo.tar.gz" is created that contains the necessary information for me to 
+    investigate the problem.
+    Please mail any of those tar balls and other kind of bug reports to katakombi@web.de
+
+
+12/08/2005
+    Stefan Kombrink >8^)
+
+---------
+LINKS
+    [1] http://web.telia.com/~u89404340/touchpad/
+    [2] http://www.gnu.org/copyleft/gpl.html
+    [3] http://qsynaptics.sf.net
