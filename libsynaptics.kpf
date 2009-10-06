@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Komodo Project File - DO NOT EDIT -->
+<project id="bf1e8e3a-4284-4081-bd88-99310ecc42bf" kpf_version="4" name="libsynaptics.kpf">
+<preference-set idref="bf1e8e3a-4284-4081-bd88-99310ecc42bf">
+  <boolean id="import_live">1</boolean>
+</preference-set>
+</project>

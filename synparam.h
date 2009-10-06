@@ -65,5 +65,27 @@
 #define PRESSMOTIONMINFACTOR    "PressureMotionMinFactor"
 #define PRESSMOTIONMAXFACTOR    "PressureMotionMaxFactor"
 // 0.14.6 (none)
+// 0.15.0
+#define FINGERPRESS             "FingerPress"
+#define EMULATETWOFINGERMINZ    "EmulateTwoFingerMinZ"
+#define CORNERCOASTING          "CornerCoasting"
+#define TRACKSTICKSPEED         "TrackstickSpeed"
+#define LOCKEDDRAGTIMEOUT       "LockedDragTimeout"
+#define CLICKFINGER1            "ClickFinger1"
+#define CLICKFINGER2            "ClickFinger2"
+#define CLICKFINGER3            "ClickFinger3"
+#define GRABEVENTDEVICE         "GrabEventDevice"
+// 0.15.1
+#define SPECIALSCROLLAREARIGHT  "SpecialScrollAreaRight"
+// 0.15.2 (none)
+// 0.99.1 (none)
+// 0.99.2 (none)
+// 0.99.3 (none)
+// 1.0.0 (none)
+// 1.1.0
+#define EMULATETWOFINGERMINW    "EmulateTwoFingerMinW"
+// 1.1.1
+// 1.1.2
+// 1.1.3
 
 #endif

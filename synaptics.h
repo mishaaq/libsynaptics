@@ -58,6 +58,12 @@ namespace Synaptics
         double max_val;                         // maximum allowed value
     } Param;
 
+    typedef enum {
+        ClickFinger1 = 0,                             /* Non-corner tap, one finger */
+        ClickFinger2,                                 /* Non-corner tap, two fingers */
+        ClickFinger3,                                 /* Non-corner tap, three fingers */
+        MAX_CLICK
+    } ClickEvent;
 
     typedef enum
     {
@@ -90,7 +96,7 @@ namespace Synaptics
         OneFinger,             // Non-corner tap, one finger
         TwoFingers,            // Non-corner tap, two fingers
         ThreeFingers,          // Non-corner tap, three fingers
-        MaxTap
+        MAX_TAP
     } TapType;
 }
 

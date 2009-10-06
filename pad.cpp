@@ -104,7 +104,7 @@ std::string Synaptics::Pad::intVerToStrVer( int v )
         "%d.%d.%d",
         v / 10000,
         ( v / 100 ) % 100,
-        v % 100
+        v % 100,
     );
 
     return std::string( ver );
@@ -483,6 +483,58 @@ void Synaptics::Pad::registerParameters()
     mSupportedDriver[ "0.14.6" ] = p;
     mSupportedDriverList.insert( mSupportedDriverList.end(), "0.14.6" );
 
+    SETPAR( _0_15_0, p[ FINGERPRESS ], finger_press, PT_INT, 0, 256 );
+    SETPAR( _0_15_0, p[ EMULATETWOFINGERMINZ ], emulate_twofinger_z, PT_INT, 0, 1000 );
+    SETPAR( _0_15_0, p[ CORNERCOASTING ], scroll_edge_corner, PT_BOOL, 0, 1 );
+    SETPAR( _0_15_0, p[ TRACKSTICKSPEED ], trackstick_speed, PT_DOUBLE, 0, 200.0 );
+    SETPAR( _0_15_0, p[ LOCKEDDRAGTIMEOUT ], locked_drag_time, PT_INT, 0, 30000 );
+    SETPAR( _0_15_0, p[ CLICKFINGER1 ], click_action[F1_CLICK1], PT_INT, 0, SYN_MAX_BUTTONS );
+    SETPAR( _0_15_0, p[ CLICKFINGER2 ], click_action[F2_CLICK1], PT_INT, 0, SYN_MAX_BUTTONS );
+    SETPAR( _0_15_0, p[ CLICKFINGER3 ], click_action[F3_CLICK1], PT_INT, 0, SYN_MAX_BUTTONS );
+    SETPAR( _0_15_0, p[ GRABEVENTDEVICE ], grab_event_device, PT_BOOL, 0, 1 );
+
+    mSupportedDriver[ "0.15.0" ] = p;
+    mSupportedDriverList.insert( mSupportedDriverList.end(), "0.15.0" );
+
+    SETPAR( _0_15_1, p[ SPECIALSCROLLAREARIGHT ], special_scroll_area_right, PT_BOOL, 0, 1 );
+
+    mSupportedDriver[ "0.15.1" ] = p;
+    mSupportedDriverList.insert( mSupportedDriverList.end(), "0.15.1" );
+
+    // same struct as in 0.15.1
+    mSupportedDriver[ "0.15.2" ] = p;
+    mSupportedDriverList.insert( mSupportedDriverList.end(), "0.15.2" );
+    
+    // same struct as in 0.15.2
+    mSupportedDriver[ "0.99.1" ] = p;
+    mSupportedDriverList.insert( mSupportedDriverList.end(), "0.99.1" );
+
+    // same struct as in 0.99.1
+    mSupportedDriver[ "0.99.2" ] = p;
+    mSupportedDriverList.insert( mSupportedDriverList.end(), "0.99.2" );
+
+    // same struct as in 0.99.2
+    mSupportedDriver[ "0.99.3" ] = p;
+    mSupportedDriverList.insert( mSupportedDriverList.end(), "0.99.3" );
+
+    // same struct as in 0.99.3
+    mSupportedDriver[ "1.0.0" ] = p;
+    mSupportedDriverList.insert( mSupportedDriverList.end(), "1.0.0" );
+
+    SETPAR( _1_1_0, p[ EMULATETWOFINGERMINW ], emulate_twofinger_w, PT_INT, 0, 15 );
+
+    mSupportedDriver[ "1.1.0" ] = p;
+    mSupportedDriverList.insert( mSupportedDriverList.end(), "1.1.0" );
+
+    mSupportedDriver[ "1.1.1" ] = p;
+    mSupportedDriverList.insert( mSupportedDriverList.end(), "1.1.1" );
+
+    mSupportedDriver[ "1.1.2" ] = p;
+    mSupportedDriverList.insert( mSupportedDriverList.end(), "1.1.2" );
+
+    mSupportedDriver[ "1.1.3" ] = p;
+    mSupportedDriverList.insert( mSupportedDriverList.end(), "1.1.3" );
+
     // TODO
     // insert new driver releases here!
 
@@ -527,6 +579,50 @@ void Synaptics::Pad::init()
 
         case ( VER( 0, 14, 6 ) ):
             sizeOfShm = sizeof( ShmSegment_0_14_6 );
+            break;
+
+        case ( VER( 0, 15, 0 ) ):
+            sizeOfShm = sizeof( ShmSegment_0_15_0 );
+            break;
+
+        case ( VER( 0, 15, 1 ) ):
+            sizeOfShm = sizeof( ShmSegment_0_15_1 );
+            break;
+
+        case ( VER( 0, 15, 2 ) ):
+            sizeOfShm = sizeof( ShmSegment_0_15_2 );
+            break;
+
+        case ( VER( 0, 99, 1 ) ):
+            sizeOfShm = sizeof( ShmSegment_0_99_1 );
+            break;
+
+        case ( VER( 0, 99, 2 ) ):
+            sizeOfShm = sizeof( ShmSegment_0_99_2 );
+            break;
+
+        case ( VER( 0, 99, 3 ) ):
+            sizeOfShm = sizeof( ShmSegment_0_99_3 );
+            break;
+
+        case ( VER( 1, 0, 0 ) ):
+            sizeOfShm = sizeof( ShmSegment_1_0_0 );
+            break;
+
+        case ( VER( 1, 1, 0 ) ):
+            sizeOfShm = sizeof( ShmSegment_1_1_0 );
+            break;
+
+        case ( VER( 1, 1, 1 ) ):
+            sizeOfShm = sizeof( ShmSegment_1_1_0 );
+            break;
+
+        case ( VER( 1, 1, 2 ) ):
+            sizeOfShm = sizeof( ShmSegment_1_1_0 );
+            break;
+
+        case ( VER( 1, 1, 3 ) ):
+            sizeOfShm = sizeof( ShmSegment_1_1_0 );
             break;
 
         //
