@@ -5,6 +5,8 @@
 #include <unistd.h>
 #include <sys/shm.h>
 #include <stdlib.h>
+#include <stdio.h>
+#include <errno.h>
 
 //
 // singleton specific code
