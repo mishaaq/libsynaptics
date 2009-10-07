@@ -1,6 +1,13 @@
 #ifndef SHM_0_15_0
 #define SHM_0_15_0
 
+typedef enum {
+    F1_CLICK1 = 0,                             /* Non-corner tap, one finger */
+    F2_CLICK1,                                 /* Non-corner tap, two fingers */
+    F3_CLICK1,                                 /* Non-corner tap, three fingers */
+    MAX_CLICK
+} ClickEvent;
+
 typedef struct
 {
     int version;			    /* Driver version */

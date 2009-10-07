@@ -4,6 +4,7 @@
 #include <pthread.h>
 #include <unistd.h>
 #include <sys/shm.h>
+#include <stdlib.h>
 
 //
 // singleton specific code
@@ -104,7 +105,7 @@ std::string Synaptics::Pad::intVerToStrVer( int v )
         "%d.%d.%d",
         v / 10000,
         ( v / 100 ) % 100,
-        v % 100,
+        v % 100
     );
 
     return std::string( ver );
@@ -464,13 +465,10 @@ void Synaptics::Pad::registerParameters()
 
     SETBASEPAR( p, _0_14_5 );
     SETPAR( _0_14_5, p[ SINGLETAPTIMEOUT ], single_tap_timeout, PT_INT, 0, 1000 );
-
     SETPAR( _0_14_5, p[ VERTEDGESCROLL ],  scroll_edge_vert,  PT_BOOL, 0, 1 );
     SETPAR( _0_14_5, p[ HORIZEDGESCROLL ], scroll_edge_horiz, PT_BOOL, 0, 1 );
-
     SETPAR( _0_14_5, p[ VERTTWOFINGERSCROLL ],  scroll_twofinger_vert,  PT_BOOL, 0, 1 );
     SETPAR( _0_14_5, p[ HORIZTWOFINGERSCROLL ], scroll_twofinger_horiz, PT_BOOL, 0, 1 );
-
     SETPAR( _0_14_5, p[ PRESSMOTIONMINZ ], press_motion_min_z, PT_INT, 0, 255 );
     SETPAR( _0_14_5, p[ PRESSMOTIONMAXZ ], press_motion_max_z, PT_INT, 0, 255 );
     SETPAR( _0_14_5, p[ PRESSMOTIONMINFACTOR], press_motion_min_factor, PT_DOUBLE, 0, 10.0 );
@@ -482,6 +480,17 @@ void Synaptics::Pad::registerParameters()
     // same struct as in 0.14.5
     mSupportedDriver[ "0.14.6" ] = p;
     mSupportedDriverList.insert( mSupportedDriverList.end(), "0.14.6" );
+
+    SETBASEPAR( p, _0_15_0 );
+    SETPAR( _0_15_0, p[ SINGLETAPTIMEOUT ], single_tap_timeout, PT_INT, 0, 1000 );
+    SETPAR( _0_15_0, p[ VERTEDGESCROLL ],  scroll_edge_vert,  PT_BOOL, 0, 1 );
+    SETPAR( _0_15_0, p[ HORIZEDGESCROLL ], scroll_edge_horiz, PT_BOOL, 0, 1 );
+    SETPAR( _0_15_0, p[ VERTTWOFINGERSCROLL ],  scroll_twofinger_vert,  PT_BOOL, 0, 1 );
+    SETPAR( _0_15_0, p[ HORIZTWOFINGERSCROLL ], scroll_twofinger_horiz, PT_BOOL, 0, 1 );
+    SETPAR( _0_15_0, p[ PRESSMOTIONMINZ ], press_motion_min_z, PT_INT, 0, 255 );
+    SETPAR( _0_15_0, p[ PRESSMOTIONMAXZ ], press_motion_max_z, PT_INT, 0, 255 );
+    SETPAR( _0_15_0, p[ PRESSMOTIONMINFACTOR], press_motion_min_factor, PT_DOUBLE, 0, 10.0 );
+    SETPAR( _0_15_0, p[ PRESSMOTIONMAXFACTOR], press_motion_max_factor, PT_DOUBLE, 0, 10.0 );
 
     SETPAR( _0_15_0, p[ FINGERPRESS ], finger_press, PT_INT, 0, 256 );
     SETPAR( _0_15_0, p[ EMULATETWOFINGERMINZ ], emulate_twofinger_z, PT_INT, 0, 1000 );
@@ -495,6 +504,26 @@ void Synaptics::Pad::registerParameters()
 
     mSupportedDriver[ "0.15.0" ] = p;
     mSupportedDriverList.insert( mSupportedDriverList.end(), "0.15.0" );
+
+    SETBASEPAR( p, _0_15_1 );
+    SETPAR( _0_15_1, p[ SINGLETAPTIMEOUT ], single_tap_timeout, PT_INT, 0, 1000 );
+    SETPAR( _0_15_1, p[ VERTEDGESCROLL ],  scroll_edge_vert,  PT_BOOL, 0, 1 );
+    SETPAR( _0_15_1, p[ HORIZEDGESCROLL ], scroll_edge_horiz, PT_BOOL, 0, 1 );
+    SETPAR( _0_15_1, p[ VERTTWOFINGERSCROLL ],  scroll_twofinger_vert,  PT_BOOL, 0, 1 );
+    SETPAR( _0_15_1, p[ HORIZTWOFINGERSCROLL ], scroll_twofinger_horiz, PT_BOOL, 0, 1 );
+    SETPAR( _0_15_1, p[ PRESSMOTIONMINZ ], press_motion_min_z, PT_INT, 0, 255 );
+    SETPAR( _0_15_1, p[ PRESSMOTIONMAXZ ], press_motion_max_z, PT_INT, 0, 255 );
+    SETPAR( _0_15_1, p[ PRESSMOTIONMINFACTOR], press_motion_min_factor, PT_DOUBLE, 0, 10.0 );
+    SETPAR( _0_15_1, p[ PRESSMOTIONMAXFACTOR], press_motion_max_factor, PT_DOUBLE, 0, 10.0 );
+    SETPAR( _0_15_1, p[ FINGERPRESS ], finger_press, PT_INT, 0, 256 );
+    SETPAR( _0_15_1, p[ EMULATETWOFINGERMINZ ], emulate_twofinger_z, PT_INT, 0, 1000 );
+    SETPAR( _0_15_1, p[ CORNERCOASTING ], scroll_edge_corner, PT_BOOL, 0, 1 );
+    SETPAR( _0_15_1, p[ TRACKSTICKSPEED ], trackstick_speed, PT_DOUBLE, 0, 200.0 );
+    SETPAR( _0_15_1, p[ LOCKEDDRAGTIMEOUT ], locked_drag_time, PT_INT, 0, 30000 );
+    SETPAR( _0_15_1, p[ CLICKFINGER1 ], click_action[F1_CLICK1], PT_INT, 0, SYN_MAX_BUTTONS );
+    SETPAR( _0_15_1, p[ CLICKFINGER2 ], click_action[F2_CLICK1], PT_INT, 0, SYN_MAX_BUTTONS );
+    SETPAR( _0_15_1, p[ CLICKFINGER3 ], click_action[F3_CLICK1], PT_INT, 0, SYN_MAX_BUTTONS );
+    SETPAR( _0_15_1, p[ GRABEVENTDEVICE ], grab_event_device, PT_BOOL, 0, 1 );
 
     SETPAR( _0_15_1, p[ SPECIALSCROLLAREARIGHT ], special_scroll_area_right, PT_BOOL, 0, 1 );
 
@@ -520,6 +549,27 @@ void Synaptics::Pad::registerParameters()
     // same struct as in 0.99.3
     mSupportedDriver[ "1.0.0" ] = p;
     mSupportedDriverList.insert( mSupportedDriverList.end(), "1.0.0" );
+
+    SETBASEPAR( p, _1_1_0 );
+    SETPAR( _1_1_0, p[ SINGLETAPTIMEOUT ], single_tap_timeout, PT_INT, 0, 1000 );
+    SETPAR( _1_1_0, p[ VERTEDGESCROLL ],  scroll_edge_vert,  PT_BOOL, 0, 1 );
+    SETPAR( _1_1_0, p[ HORIZEDGESCROLL ], scroll_edge_horiz, PT_BOOL, 0, 1 );
+    SETPAR( _1_1_0, p[ VERTTWOFINGERSCROLL ],  scroll_twofinger_vert,  PT_BOOL, 0, 1 );
+    SETPAR( _1_1_0, p[ HORIZTWOFINGERSCROLL ], scroll_twofinger_horiz, PT_BOOL, 0, 1 );
+    SETPAR( _1_1_0, p[ PRESSMOTIONMINZ ], press_motion_min_z, PT_INT, 0, 255 );
+    SETPAR( _1_1_0, p[ PRESSMOTIONMAXZ ], press_motion_max_z, PT_INT, 0, 255 );
+    SETPAR( _1_1_0, p[ PRESSMOTIONMINFACTOR], press_motion_min_factor, PT_DOUBLE, 0, 10.0 );
+    SETPAR( _1_1_0, p[ PRESSMOTIONMAXFACTOR], press_motion_max_factor, PT_DOUBLE, 0, 10.0 );
+    SETPAR( _1_1_0, p[ FINGERPRESS ], finger_press, PT_INT, 0, 256 );
+    SETPAR( _1_1_0, p[ EMULATETWOFINGERMINZ ], emulate_twofinger_z, PT_INT, 0, 1000 );
+    SETPAR( _1_1_0, p[ CORNERCOASTING ], scroll_edge_corner, PT_BOOL, 0, 1 );
+    SETPAR( _1_1_0, p[ TRACKSTICKSPEED ], trackstick_speed, PT_DOUBLE, 0, 200.0 );
+    SETPAR( _1_1_0, p[ LOCKEDDRAGTIMEOUT ], locked_drag_time, PT_INT, 0, 30000 );
+    SETPAR( _1_1_0, p[ CLICKFINGER1 ], click_action[F1_CLICK1], PT_INT, 0, SYN_MAX_BUTTONS );
+    SETPAR( _1_1_0, p[ CLICKFINGER2 ], click_action[F2_CLICK1], PT_INT, 0, SYN_MAX_BUTTONS );
+    SETPAR( _1_1_0, p[ CLICKFINGER3 ], click_action[F3_CLICK1], PT_INT, 0, SYN_MAX_BUTTONS );
+    SETPAR( _1_1_0, p[ GRABEVENTDEVICE ], grab_event_device, PT_BOOL, 0, 1 );
+    SETPAR( _1_1_0, p[ SPECIALSCROLLAREARIGHT ], special_scroll_area_right, PT_BOOL, 0, 1 );
 
     SETPAR( _1_1_0, p[ EMULATETWOFINGERMINW ], emulate_twofinger_w, PT_INT, 0, 15 );
 

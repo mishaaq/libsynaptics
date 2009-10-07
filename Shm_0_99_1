@@ -1,7 +1,7 @@
 #ifndef SHM_0_99_1
 #define SHM_0_99_1
 
-typedef
+typedef struct
 {
     int version;			    /* Driver version */
 

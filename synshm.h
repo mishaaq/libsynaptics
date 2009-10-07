@@ -19,6 +19,7 @@
 #include "Shm_1_1_0"
 #include "Shm_1_1_1"
 #include "Shm_1_1_2"
+#include "Shm_1_1_3"
 
 // for getting the driver version
 typedef struct
