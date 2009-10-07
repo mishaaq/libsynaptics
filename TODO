@@ -2,6 +2,7 @@
 *documentation
 *implementing stub routines
 *examining if there are still deadlocks / race conditions
+*change versioning function to support beta versions of the driver
 DONE:
 *protecting "getParam" and "setParam", "INIT" and "CLOSE" by an mutex
 *separate RO and RW parameters
